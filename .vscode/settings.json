@@ -1,0 +1,11 @@
+{
+  "script.commands": {
+    "commands": [
+      {
+        "id": "vscommands:hello-world",
+        "displayName": "vscommands Hello World!",
+        "script": "./src/hello-world.js",
+      }
+    ]
+  }
+}
