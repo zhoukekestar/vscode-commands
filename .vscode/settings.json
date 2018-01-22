@@ -5,7 +5,16 @@
         "id": "vscommands:hello-world",
         "displayName": "vscommands Hello World!",
         "script": "./src/hello-world.js",
-      }
+      },
+      {
+        "id": "vscommands:replace",
+        "displayName": "vscommands replace",
+        "script": "./src/replace.js",
+        "button": {
+          "text": "Replace"
+        }
+      },
+
     ]
   }
 }

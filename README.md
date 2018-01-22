@@ -3,3 +3,7 @@
 * `$git clone https://github.com/zhoukekestar/vscode-commands.git`
 * Add `vscode-commands` to your workspace
 * `Command + Shirt + P` to open & select `Script commands: select workspace` & select `vscode-commands` which is clone from github.
+
+## References
+* [vscode api](https://code.visualstudio.com/Docs/extensionAPI/vscode-api)
+* [vs script commands](https://github.com/mkloubert/vs-script-commands)
