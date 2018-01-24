@@ -46,17 +46,20 @@ funs.push(text => {
   return text.replace(/Picture/g, 'Image');
 })
 
-// funs.push((text, fileName) => {
-//   fs.writeFileSync(fileName.replace('.js', '.css'), 'abc')
+// funs.push((text, filename) => {
+//   fs.writeFileSync(filename.replace('.js', '.css'), 'abc')
 //   return text;
 // })
 
-module.exports = function(text, fileName) {
+module.exports = function(text, filename) {
 
   for (let i = 0; i < funs.length; i++) {
-    text = funs[i](text, fileName);
+    try {
+      text = funs[i](text, filename);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
-  // vscode.window.showInformationMessage('Davinci replace finished!');
   return text;
 }

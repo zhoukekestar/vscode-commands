@@ -1,39 +1,37 @@
 const vscode = require('vscode');
 const OPTIONS = {
-  DAVINCI: 'DAVINCI',
-  EMPTY: 'EMPTY',
+  EMPTY: ' --- 请选择 --- ',
+  DAVINCI: '达芬奇代码 2 Cox',
+  DAVINCI_CSS: '分离达芬奇 Styles 到 Css',
 }
 
 exports.execute = function(args) {
 
+  // Get current text & fliename
   let text = vscode.window.activeTextEditor.document.getText();
   const fileName = vscode.window.activeTextEditor.document.fileName;
-  // const output = vscode.window.createOutputChannel('vscode-commands');
 
-  vscode.window.showQuickPick([OPTIONS.DAVINCI, OPTIONS.EMPTY]).then(val => {
+  // Pick one action to process
+  vscode.window.showQuickPick(Object.keys(OPTIONS).map(key => OPTIONS[key])).then(val => {
     switch(val) {
       case OPTIONS.DAVINCI:
         const replaceDavinci = require('./davinci');
-        text = replaceDavinci(text);
+        text = replaceDavinci(text, fileName);
         args.log(OPTIONS.DAVINCI + ' Done!');
         break;
+      case OPTIONS.DAVINCI_CSS:
+        const replaceDavinciCss = require('./davinci-css');
+        text = replaceDavinciCss(text, fileName);
+        args.log(OPTIONS.DAVINCI_CSS + ' Done!');
+        break;
       default:
-        args.log('Nothing Selected.');
+        args.log('Nothing to do.');
     }
-  })
 
-
-  // args.require('/Users/zhoukeke/workspace/GitHub/vscode-commands/src/replace-davinci.js')
-  // args.require('~/workspace/Github/vscode-commands/src/replace-davinci');
-  // vscode.window.showInformationMessage('Davinci replace finished!');
-  // console.log('global', Object.keys(global));
-  // console.log('replace', Object.keys(replaceDavinci))
-  // console.log(JSON.stringify(replaceDavinci))
-  // console.log('execute', text, fileName)
-
-
-  vscode.window.activeTextEditor.edit(editBuilder => {
-    editBuilder.replace(new vscode.Range(0,0,99999,99999), text);
-    vscode.commands.executeCommand('workbench.action.files.save');
+    // Get new content & auto save this.
+    vscode.window.activeTextEditor.edit(editBuilder => {
+      editBuilder.replace(new vscode.Range(0,0,99999,99999), text);
+      vscode.commands.executeCommand('workbench.action.files.save');
+    });
   });
 }
