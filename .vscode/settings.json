@@ -14,7 +14,14 @@
           "text": "Replace"
         }
       },
-
+      {
+        "id": "vscommands:tools",
+        "displayName": "vscommands tools",
+        "script": "./src/tools/index.js",
+        "button": {
+          "text": "Tools"
+        }
+      },
     ]
   }
 }
