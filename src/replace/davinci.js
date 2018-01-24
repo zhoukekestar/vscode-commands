@@ -58,6 +58,5 @@ module.exports = function(text, fileName) {
   }
 
   // vscode.window.showInformationMessage('Davinci replace finished!');
-  vscode.commands.executeCommand('workbench.action.files.save');
   return text;
 }

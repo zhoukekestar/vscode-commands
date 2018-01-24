@@ -1,15 +1,15 @@
 {
   "script.commands": {
     "commands": [
-      {
-        "id": "vscommands:hello-world",
-        "displayName": "vscommands Hello World!",
-        "script": "./src/hello-world.js",
-      },
+      // {
+      //   "id": "vscommands:hello-world",
+      //   "displayName": "vscommands Hello World!",
+      //   "script": "./src/hello-world.js",
+      // },
       {
         "id": "vscommands:replace",
         "displayName": "vscommands replace",
-        "script": "./src/replace.js",
+        "script": "./src/replace/index.js",
         "button": {
           "text": "Replace"
         }
