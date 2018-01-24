@@ -43,6 +43,8 @@ const convert = (input) => {
 
 const reg = /let styles = ({[\s\S]*?});/;
 module.exports = function(text, filename) {
+
+  const name = filename.match(/([^/]*)\.js/)[1];
   const cssFileName = filename.replace('.js', '.css');
   text = text.replace(reg, (str, css) => {
     css = convert(css);
@@ -52,10 +54,8 @@ module.exports = function(text, filename) {
   });
 
   text = text.replace(/(import.*;)\n\n/, str => {
-    return `${str}import 'abc.css'`;
+    return `${str}import './${name}.css'`;
   });
 
   return text.replace(/style={styles.(\w*)}/g, `className='$1'`);
 }
-// * Find `style={styles.(\w*)}`
-// * Replace with `className='$1'`
