@@ -1,6 +1,7 @@
 const vscode = require('vscode');
 const OPTIONS = {
-  EMPTY: ' --- 请选择 --- ',
+  // EMPTY: ' --- 请选择 --- ',
+  SNIPPETS: '代码提示库',
   TERMINAL: '终端执行',
 }
 
@@ -21,6 +22,9 @@ exports.execute = function(args) {
         terminal.show();
         args.log('terminal')
         break;
+      case OPTIONS.SNIPPETS:
+        const snippets = require('./my-snippets');
+        return snippets();
       default:
         args.log('Nothing Selected.');
     }
