@@ -36,47 +36,53 @@ const saveToPackage = (name) => {
 }
 
 const insertSnippet = (snippet) => {
-  editor.edit(editBuilder => {
-    editBuilder.insert(editor.selection.active, snippet);
+  return new Promise(resolve => {
+
+    editor.edit(editBuilder => {
+      editBuilder.insert(editor.selection.active, snippet);
+    });
+
+    setTimeout(() => {
+      resolve();
+    }, 500)
   })
+
 }
 
 const snippets = {
   'goldlog launch': () => {
-    // add snippet
-    insertSnippet(`goldlog.launch(['a', 'b'], { name: 'yourPageName' });`);
-
-    setTimeout(() => {
-      // add deps
+    insertSnippet(`goldlog.launch(['a', 'b'], { name: 'yourPageName' });`) .then(() => {
       importNewLib(`import goldlog from '@ali/universal-goldlog';`);
-      //save
       saveToPackage('@ali/universal-goldlog');
-    }, 500);
+    });
   },
   'set title navigator': () => {
-    // add snippet
     insertSnippet(`
-// 设置标题
-Navigator.setNavBar({
-  title: 'title',
-}, (err) => console.log(err));
-    `);
-
-    setTimeout(() => {
-      // add deps
+      // 设置标题
+      Navigator.setNavBar({
+        title: 'title',
+      }, (err) => console.log(err));
+    `.replace(/[ ]{6}/g, '')).then(() => {
       importNewLib(`import Navigator from '@ali/cox-navigator';`);
-      //save
       saveToPackage('@ali/cox-navigator');
-    }, 500);
-
+    });
   },
   'load loading': () => {
-    insertSnippet(`<GlobalLoading />`);
-    setTimeout(() => {
-      // add deps
+    insertSnippet(`<GlobalLoading />`).then(() => {
       importNewLib(`import { GlobalLoading } from '@ali/rax-cox-loading';`);
-      // save
-      saveToPackage('@ali/rax-cox-loading')
+      saveToPackage('@ali/rax-cox-loading');
+    });
+  },
+  'emit emitter event': () => {
+    insertSnippet(`Emitter.on.emit`).then(() => {
+      importNewLib(`import Emitter from '@ali/universal-emitter';`);
+      saveToPackage('@ali/universal-emitter');
+    });
+  },
+  'toast show alert': () => {
+    insertSnippet(`Toast.show('hi')`).then(() => {
+      importNewLib(`import Toast from '@ali/universal-toast';`);
+      saveToPackage('@ali/universal-toast')
     })
   },
   'hello world': `console.log('hello world!');`,
