@@ -85,6 +85,11 @@ const snippets = {
       saveToPackage('@ali/universal-toast')
     })
   },
+  'get url params': `
+  let buyerLoginId;
+  buyerLoginId = (buyerLoginId = location.search.match(/buyerLoginId=([^&=]*)/)) && buyerLoginId[1];
+  buyerLoginId = buyerLoginId && decodeURIComponent(buyerLoginId);
+  `.replace(/  /g, ''),
   'hello world': `console.log('hello world!');`,
 };
 
