@@ -85,6 +85,8 @@ const snippets = {
       saveToPackage('@ali/universal-toast')
     })
   },
+  'spm link spmc': `const appendSPM = (url, spm) => url.replace(/spm(=|%3D)/, '__spm__$1').replace(/(#.*)?$/, \`&spm=\${spm}$1\`);`,
+  'chrome debug': `//@ sourceURL=dynamicScript.js`,
   'get url params': `
   let buyerLoginId;
   buyerLoginId = (buyerLoginId = location.search.match(/buyerLoginId=([^&=]*)/)) && buyerLoginId[1];
