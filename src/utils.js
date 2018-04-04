@@ -5,8 +5,7 @@ const vscode = require('vscode');
 module.exports.getProjectPath = () => {
   const fileName = vscode.window.activeTextEditor.document.fileName;
   let dir = path.dirname(fileName);
-  let base = 'package.json';
-
+  let base = './.git/HEAD';
 
   while(true) {
     let file = path.format({ dir, base });
