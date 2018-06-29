@@ -1,0 +1,26 @@
+{
+  "name": "vscode-commands",
+  "version": "1.0.0",
+  "description": "* Open VSCode & Install [vs-script-commands](https://github.com/mkloubert/vs-script-commands) * `$git clone https://github.com/zhoukekestar/vscode-commands.git` * Add `vscode-commands` to your workspace * `Command + Shirt + P` to open & select `Script commands: select workspace` & select `vscode-commands` which is clone from github.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhoukekestar/vscode-commands.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhoukekestar/vscode-commands/issues"
+  },
+  "homepage": "https://github.com/zhoukekestar/vscode-commands#readme",
+  "dependencies": {
+    "@ali/tps-node": "^1.1.1"
+  }
+}

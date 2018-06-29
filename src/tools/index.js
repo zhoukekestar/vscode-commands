@@ -5,7 +5,11 @@ const OPTIONS = {
   // EMPTY: ' --- 请选择 --- ',
   SNIPPETS: '代码提示库 snippets',
   TERMINAL: '终端执行 terminal',
+  INSTALLDEPS: '安装当前选中依赖 install deps',
 }
+
+const { window, workspace } = vscode;
+const { ConfigurationTarget } = workspace;
 
 exports.execute = function(args) {
 
@@ -26,6 +30,10 @@ exports.execute = function(args) {
       case OPTIONS.SNIPPETS:
         const snippets = require('./my-snippets');
         return snippets();
+
+      case OPTIONS.INSTALLDEPS:
+        const installdeps = require('./installdeps');
+        return installdeps();
       default:
         args.log('Nothing Selected.');
     }

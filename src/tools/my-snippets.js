@@ -56,6 +56,12 @@ const snippets = {
       saveToPackage('@ali/universal-goldlog');
     });
   },
+  'refresh page': () => {
+    insertSnippet(`{ /:800|pre-air/.test(location.href) && <RefreshPage /> }`).then(() => {
+      importNewLib(`import RefreshPage from '@ali/rax-cox-refresh-page';`);
+      saveToPackage('@ali/rax-cox-refresh-page');
+    });
+  },
   'set title navigator': () => {
     insertSnippet(`
       // 设置标题
