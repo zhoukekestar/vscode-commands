@@ -13,16 +13,24 @@ module.exports = function() {
       return;
   }
 
-  let selection = editor.selection;
-  let text = editor.document.getText(selection);
+  // let selection = editor.selection;
+  // let text = editor.document.getText(selection);
 
   console.log('install text')
-  const terminal = vscode.window.createTerminal(path.match(/\/([^\/]*)$/)[1]);
-  terminal.sendText(`cd ${path}`);
-  terminal.sendText(`tnpm i ${text} -S`);
+  const terminal = vscode.window.createTerminal({
+    cwd: path,
+    name: 'installdeps',
+  });
   terminal.show();
 
-  setTimeout(() => {
-    terminal.dispose();
-  }, 3000);
+  let text = editor.document.getText();
+  let mods = [];
+  text.replace(/import(?:["'\s]*(?:[\w*{}\n, ]+)from\s*)["'\s]([@\w/_-]+)["'\s]/g, (s, mod) => {
+    mods.push(mod);
+  });
+
+  terminal.sendText(`tnpm i ${mods.join(' ')} -S`);
+  // terminal.sendText(`cd ${path}`);
+  // terminal.sendText(`tnpm i ${text} -S`);
+
 }

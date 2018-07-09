@@ -1,5 +1,4 @@
 {
-  "tps.empId": "",
   "script.commands": {
     "commands": [
       // {
@@ -24,5 +23,5 @@
         }
       },
     ]
-  }
+  },
 }
