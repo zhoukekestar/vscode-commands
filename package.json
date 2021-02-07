@@ -9,7 +9,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhoukekestar/vscode-commands.git"
@@ -21,6 +20,7 @@
   },
   "homepage": "https://github.com/zhoukekestar/vscode-commands#readme",
   "dependencies": {
+    "@ali/egg-odps": "^0.0.1-alpha.4",
     "@ali/tps-node": "^1.1.1"
   }
 }
